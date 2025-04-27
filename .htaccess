@@ -1,0 +1,13 @@
+RewriteEngine On
+
+# Redirect all short URLs to the redirect.php script
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^([a-zA-Z0-9_-]+)$ redirect.php?path=$1 [L,QSA]
+
+# Protect sensitive files
+<FilesMatch "^(config\.php|db_setup\.sql)$">
+    Order Allow,Deny
+    Deny from all
+</FilesMatch>
+

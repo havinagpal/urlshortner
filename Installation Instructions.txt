@@ -1,0 +1,189 @@
+Thought for 1 second### Beginner-Friendly Installation Guide for Your Link Shortener
+
+Let me walk you through setting up your link shortener on shared hosting, step by step, with no technical experience required:
+
+## 1. Setting Up Your Database
+
+### Creating a New Database
+
+1. **Log in to your hosting control panel** (often called cPanel, Plesk, or similar)
+2. **Find the database section** - Look for icons labeled "MySQL Databases," "Database Manager," or similar
+3. **Create a new database**:
+
+1. Enter a name for your database (for example: `link_shortener`)
+2. Write down this name - you'll need it later!
+3. Click "Create Database" or "Next"
+
+
+
+
+
+### Creating a Database User
+
+1. In the same database section, look for "MySQL Users" or "Add New User"
+2. Create a new user:
+
+1. Enter a username (for example: `link_user`)
+2. Create a strong password (and save it somewhere safe!)
+3. Click "Create User" or "Add User"
+
+
+
+
+
+### Connecting the User to the Database
+
+1. Look for "Add User to Database" or similar option
+2. Select your new user and database from dropdown menus
+3. For permissions, select "All Privileges" or check all boxes
+4. Click "Add" or "Save"
+
+
+### Importing the Database Structure
+
+1. In your hosting control panel, find "phpMyAdmin" (usually in the database section)
+2. Click on your new database name in the left sidebar
+3. Click the "Import" tab at the top
+4. Click "Choose File" and select the `db_setup.sql` file from your computer
+5. Scroll down and click "Go" or "Import"
+
+
+## 2. Uploading Your Files
+
+### Preparing Your Files
+
+1. Make sure you have all the files from the code I provided
+2. Check that the `config.php` file has been updated with your database information:
+
+1. Open `config.php` in a text editor (like Notepad or TextEdit)
+2. Change these lines to match your database information:
+
+```php
+$host = 'localhost'; // Usually stays as 'localhost'
+$dbname = 'link_shortener'; // The database name you created
+$username = 'link_user'; // The username you created
+$password = 'your_password'; // The password you created
+```
+
+
+3. Save the file
+
+
+
+
+
+### Uploading to Your Hosting
+
+1. In your hosting control panel, find "File Manager" or "FTP"
+2. Navigate to your website's main folder (often called "public_html," "www," or "htdocs")
+3. If you want the link shortener to be your main website:
+
+1. Upload all files directly to this main folder
+
+
+
+4. If you want it in a subfolder (like yourdomain.com/links):
+
+1. Create a new folder (e.g., "links")
+2. Open that folder
+3. Upload all files there
+
+
+
+
+
+### Using File Manager to Upload
+
+1. Click "Upload" in your file manager
+2. Select all the files from your computer
+3. Wait for the upload to complete
+4. Make sure the folder structure is maintained:
+
+1. All PHP files should be in the locations shown in the code
+2. The `api` folder should contain all the API files
+
+
+
+
+
+## 3. Setting Permissions
+
+This step ensures the web server can read your files:
+
+1. In your file manager, select all the files you uploaded
+2. Look for "Permissions," "File Permissions," or a similar option (sometimes it's under "Right-click" menu)
+3. Set permissions to:
+
+1. For folders: 755 (this is often shown as checkboxes)
+2. For files: 644
+
+
+
+4. Click "Apply" or "Save"
+
+
+## 4. Testing Your Link Shortener
+
+Now it's time to see if everything works:
+
+1. Open your web browser
+2. Go to your website address where you installed the link shortener
+
+1. If you installed in the main folder: `http://yourdomain.com`
+2. If you installed in a subfolder: `http://yourdomain.com/subfolder`
+
+
+
+3. You should see the link shortener interface
+4. Test creating a short link:
+
+1. Enter a long URL (like `https://www.google.com`)
+2. Click "Create Short Link"
+3. You should see a new short URL
+
+
+
+5. Test the short link by clicking on it
+6. Test editing a link:
+
+1. Enter the short URL you just created
+2. Enter a new destination URL
+3. Click "Update Link"
+4. Test the short link again to see if it redirects to the new URL
+
+
+
+
+
+## Troubleshooting Common Issues
+
+If something isn't working:
+
+### Database Connection Problems
+
+- Double-check your database name, username, and password in `config.php`
+- Make sure the user has permission to access the database
+
+
+### 500 Server Error
+
+- This usually means there's a PHP error
+- Check that all files were uploaded correctly
+- Make sure your hosting supports PHP version 7.0 or higher
+
+
+### Short Links Not Working
+
+- Make sure the `.htaccess` file was uploaded to the main folder
+- Check if your hosting supports .htaccess files (most do)
+- Some hosts require you to enable "mod_rewrite" - contact your hosting support if needed
+
+
+### Need More Help?
+
+- Most hosting providers offer support through chat or tickets
+- You can show them this guide and ask for help with the specific step you're stuck on
+
+
+That's it! Your link shortener should now be fully functional. If you have any questions or run into issues, feel free to ask for more help!
+     
